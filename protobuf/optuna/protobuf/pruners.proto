@@ -9,4 +9,6 @@ message Pruner {
 }
 
 message MedianPruner {
+  uint32 n_start_up_trials = 1;
+  uint32 n_warmup_steps = 2;
 }

@@ -1,3 +1,4 @@
+from optuna import client  # NOQA
 from optuna import config  # NOQA
 from optuna import dashboard  # NOQA
 from optuna import distributions  # NOQA
@@ -5,6 +6,7 @@ from optuna import integration  # NOQA
 from optuna import logging  # NOQA
 from optuna import pruners  # NOQA
 from optuna import samplers  # NOQA
+from optuna import server  # NOQA
 from optuna import storages  # NOQA
 from optuna import structs  # NOQA
 from optuna import study  # NOQA

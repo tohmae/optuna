@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package optuna.pruners;
+
+message Pruner {
+  oneof pruner_oneof {
+    MedianPruner median = 1;
+  }
+}
+
+message MedianPruner {
+}

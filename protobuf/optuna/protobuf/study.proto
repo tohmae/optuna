@@ -13,6 +13,7 @@ service Study {
   rpc finish_trial(FinishTrialRequest) returns (Empty) {}
   rpc prune_trial(PruneTrialRequest) returns (Empty) {}
   rpc suggest_uniform(SuggestUniformRequest) returns (SuggestedDouble) {}
+  rpc best_params(StudyInstance) returns (BestParams) {}
 
   // open_study
   // finish_stody
@@ -21,6 +22,10 @@ service Study {
   // suggest_xxx
   // get_xxx
   // set_xxx
+}
+
+message BestParams {
+  map<string, double> params = 1;
 }
 
 message SuggestUniformRequest {

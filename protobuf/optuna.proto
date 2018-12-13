@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package optuna;
+
+service Optuna {
+  rpc create_study(CreateStudyRequest) returns (Study) {}
+  rpc open_study(OpenStudyRequest) returns (Study) {}
+  rpc close_study(Study) returns (Empty) {}
+  rpc heartbeat(Study) returns (Empty) {}
+  rpc best_params(StudyInstance) returns (BestParams) {}
+
+  rpc start_trial(Study) returns (Trial) {}
+  rpc finish_trial(Trial) returns (Empty) {}
+  rpc prune_trial(Trial) returns (Empty) {}
+  rpc report(ReportRequest) returns (Empty) {}
+  rpc should_prune(Trial) returns (bool) {}
+  rpc suggest(SuggestRequest) returns (SuggestResponse) {}
+}

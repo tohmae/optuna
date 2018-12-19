@@ -96,13 +96,19 @@ class SuccessiveHalvingPruner(BasePruner):
         value = trial.intermediate_values[step]
         all_trials = None
         while True:
-            promotion_step = self.min_resource * \
-                (self.reduction_factor ** (self.min_early_stopping_rate + rung))
+            promotion_step = self.min_resource * (self.reduction_factor ** rung)
+
             if step < promotion_step:
                 return False
 
-            if math.isnan(value):
+            if math.isnan(value) and self.min_early_stopping_rate <= rung:
                 return True
+
+            if rung < self.min_early_stopping_rate:
+                if not math.isnan(value):
+                    storage.set_trial_system_attr(trial_id, completed_rung_key(rung), value)
+                rung += 1
+                continue
 
             if all_trials is None:
                 all_trials = storage.get_all_trials(study_id)
